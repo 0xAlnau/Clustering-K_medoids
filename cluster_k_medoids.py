@@ -1,4 +1,5 @@
 from math import sqrt
+import matplotlib.pyplot as plt #cal fer pip install matplotlib
 import random
 
 class Clustering():
@@ -119,4 +120,35 @@ class Clustering():
             for j in range(m):
                 lloc = self.clusters[i][j]
                 print(f"     · {lloc.nom}")
+
+
+    #mostra els clusters de forma visual
+    def plot_clusters(self):
+        k = self.k
+        colors = ['red', 'blue', 'green', 'purple', 'orange', 'cyan', 'magenta', 'yellow']
+
+        plt.figure(figsize=(10, 7))
+
+        for j in range(k):
+            cluster_color = colors[j % len(colors)] #per si hi ha més clusters que colors
+
+            x_vals = [lloc.x for lloc in self.clusters[j]] #extreiem coords
+            y_vals = [lloc.y for lloc in self.clusters[j]]
+            noms = [lloc.nom for lloc in self.clusters[j]]
+
+            plt.scatter(x_vals, y_vals, c=cluster_color, alpha=0.5, s=60, label=f'Cluster {j}') #pintem punts normals
+
+            for i, nom in enumerate(noms): #afegim els noms
+                plt.annotate(nom, (x_vals[i], y_vals[i] + 0.15), fontsize=9, ha='center', alpha=0.8)
+
+            medoid_idx = self.medoids[j] #marquem medoid
+            medoid_lloc = self.llocs[medoid_idx]
+            plt.scatter(medoid_lloc.x, medoid_lloc.y, c=cluster_color, edgecolors='black', marker='X', s=250)
+
+        plt.title('Visualització K-medoids', fontsize=16, fontweight='bold') #configuracions finals
+        plt.xlabel('Coordenada X')
+        plt.ylabel('Coordenada Y')
+        plt.grid(True, linestyle='--', alpha=0.4)
+
+        plt.show()
 

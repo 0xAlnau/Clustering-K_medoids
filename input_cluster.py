@@ -44,3 +44,7 @@ clustering = Clustering(llocs, n, k)
 clustering.compute()
 clustering.show_results()
 
+print()
+
+clustering.plot_clusters()
+
