@@ -20,14 +20,14 @@ if (resposta == 1):
 
     for i in range(0, n):
         print(f"- Lloc[{i}]")
-        nom = input("       Nom: ")
+        nom = input("     Nom: ")
         x = input("     Coordenada x: ")
         y = input("     Coordenada y: ")
         llocs.append(Lloc(nom,x,y))
 
 else:
-    arxiu = input("Indica el nom de l'arxiu (de la carpeta Inputs-CSV i amb el .csv): ")
-    with open("Inputs-CSV/" + arxiu) as f:
+    arxiu = input("Indica el nom de l'arxiu (de la carpeta CSV i amb el .csv): ")
+    with open("CSV/" + arxiu) as f:
         dades = csv.DictReader(f)
         i = 0
         for row in dades:
