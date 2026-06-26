@@ -108,6 +108,8 @@ class Clustering():
             if millora:
                 self.medoids[m_best] = o_best
                 self.associa_llocs()
+            else:
+                self.associa_llocs()
 
 
     #mostra els clústers per terminal
