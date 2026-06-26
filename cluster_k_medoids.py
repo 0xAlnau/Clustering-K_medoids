@@ -75,9 +75,38 @@ class Clustering():
 
     #crea els clústers
     def compute(self):
+        n = self.n
+        k = self.k
+
         self.calc_distances()
         self.calc_medoids()
         self.associa_llocs()
+
+        #anem provant combinacions canviant medoids
+        millora = True
+        while millora:
+            m_best = -1 #millor medoid a intercanviar
+            o_best = -1 #millor no medoid a intercanviar
+            millora = False #forcem a intentar millorar
+            millor_cost_act = self.cost_global
+
+            for l in range(k):
+                i = self.medoids[l]
+                for j in range(n):
+                    if self.not_in_medoids(j):
+                        self.medoids[l] = j
+                        self.associa_llocs()
+
+                        if self.cost_global < millor_cost_act:
+                            millor_cost_act = self.cost_global
+                            m_best = l
+                            o_best = j
+                            millora = True
+                        self.medoids[l] = i
+
+            if millora:
+                self.medoids[m_best] = o_best
+                self.associa_llocs()
 
 
     #mostra els clústers per terminal
