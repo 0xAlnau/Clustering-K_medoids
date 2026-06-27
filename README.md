@@ -21,4 +21,4 @@ Els tres fitxers més rellevants són:
 
 ## Resultats
 Un exemple de resultat obtingut és:  
-![Resultat](https://github.com/0xAlnau/Clustering-K_medoids/Inputs/Resultat.png?raw=true)
+![Resultat](https://github.com/0xAlnau/Clustering-K_medoids/blob/main/Inputs/Resultat.png?raw=true)
