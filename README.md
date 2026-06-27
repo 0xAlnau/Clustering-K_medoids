@@ -13,8 +13,8 @@ Per a executar el programa només cal fer: `python3 input_cluster.py`
 Si es vol utilitzar un fitxer de la carpeta `Inputs` cal fer: `python3 input_cluster.py < Inputs/input-42llocs-4clusters.txt`  
 
 Els tres fitxers més rellevants són:
-    - `input_cluster.py`: aquest arxiu és el que interactua amb l'usuari, i li permet decidir si vol introduir els llocs a mà o des de un arxiu .csv. Una vegada ja té totes les dades d'entrada se les passa a l'algorisme de Clustering.
-    - `cluster_k_medoids.py`: aquí s'implementa tot el Clustering, rep els llocs a tractar, quants hi ha i quants clústers es volen.
-    - `Lloc.py`: és una classe que permet representar les dades. Un lloc té un nom i una coordenada x i una altra y. Els llocs s'han de visualitzar com una vista de satèl·lit.
+- `input_cluster.py`: aquest arxiu és el que interactua amb l'usuari, i li permet decidir si vol introduir els llocs a mà o des de un arxiu .csv. Una vegada ja té totes les dades d'entrada se les passa a l'algorisme de Clustering.
+- `cluster_k_medoids.py`: aquí s'implementa tot el Clustering, rep els llocs a tractar, quants hi ha i quants clústers es volen.
+- `Lloc.py`: és una classe que permet representar les dades. Un lloc té un nom i una coordenada x i una altra y. Els llocs s'han de visualitzar com una vista de satèl·lit.
 
 ## Resultats
