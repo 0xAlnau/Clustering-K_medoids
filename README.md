@@ -21,4 +21,4 @@ Els tres fitxers més rellevants són:
 
 ## Resultats
 Un exemple de resultat obtingut és:  
-/home/alnau/Imatges/Captures de pantalla/Captura de pantalla de 2026-06-27 17-15-33.png
+![Resultat](https://github.com/0xAlnau/Clustering-K_medoids/Inputs/Resultat.png?raw=true)
