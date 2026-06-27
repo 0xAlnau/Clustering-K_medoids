@@ -7,6 +7,8 @@ Aquest algorisme és un de molts que es poden utilitzar per a realitzar clúster
 
 L'algorisme de K-medoids utilitza per dintre l'algorisme de Partitioning Around Medoids (PAM) clàssic. S'ha utilitzat una selecció aleatòria dels medoids inicials, i després, amb l'algorisme PAM es van provant swaps entre medoids i punts normals per a veure si el cost global entre tots els clústers disminueix (els medoids estan millor col·locats a cada clúster). El càlcul de la distància entre tots els punts s'ha fet amb la distància tradicional Euclidia.
 
+També està implementada la funcionalitat de calcular el valor de Silhouette (valor entre -1 i 1), que permet veure si els clústers estan ben formats o no. Bona a partir de 0.7, regular a partir de 0.5, o dolenta si es més de 0.25.
+
 ## Execució
 Per a executar el programa només cal fer: `python3 input_cluster.py`  
 

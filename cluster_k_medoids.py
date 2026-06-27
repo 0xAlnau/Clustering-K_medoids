@@ -39,10 +39,7 @@ class Clustering():
 
     #retorna true si el valor per parametre no es als medoids
     def not_in_medoids(self, i):
-        for e in self.medoids:
-            if i == e:
-                return False
-        return True
+        return i not in self.medoids
 
 
     #associa cada lloc al medoid més proper
@@ -112,6 +109,69 @@ class Clustering():
                 self.associa_llocs()
 
 
+    #retorna en quin cluster es troba el lloc p
+    def select_cluster(self, p):
+        k = self.k
+        llocs = self.llocs
+        for i in range(k):
+            for e in self.clusters[i]:
+                if e == llocs[p]:
+                    return i
+
+
+    #retorna el valor de silhouette del clúster actual
+    def calc_silhouette(self):
+        n = self.n
+        k = self.k
+        llocs = self.llocs
+
+        a = [0 for _ in range(n)]
+        b = [float('inf') for _ in range(n)]
+        s = [0 for _ in range(n)]
+
+        for i in range(n): #calculem a(i) per cada lloc i
+            j = self.select_cluster(i)
+            cluster_actual = self.clusters[j]
+            clust_len = len(cluster_actual)
+
+            if clust_len <= 1:
+                a[i] = 0
+            else:
+                suma = 0
+                for lloc in cluster_actual: #anem sumant dist de cada lloc amb l'altre
+                    if llocs[i] != lloc:
+                        idx = self.llocs.index(lloc)
+                        suma = suma + self.dist[i][idx]
+                a[i] = (1 / (clust_len - 1)) * suma #dist mitjana entre mateix cluster
+
+        for i in range(n): #calculem b(i) per cada lloc i
+            j = self.select_cluster(i)
+            for c_idx, cluster in enumerate(self.clusters):
+                if j != c_idx:
+                    clust_len = len(cluster)
+
+                    if clust_len == 0:
+                        b[i] = b[i]
+                    else:
+                        suma = 0
+                        for lloc in cluster:
+                            idx = self.llocs.index(lloc)
+                            suma = suma + self.dist[i][idx]
+
+                        b_i = (1 / clust_len) * suma
+                        b[i] = min(b[i], b_i) #dist mitjana mínima entre tots els clusters
+
+        for i in range(n):
+            j = self.select_cluster(i)
+            if len(self.clusters[j]) <= 1:
+                s[i] = 0
+            else:
+                s[i] = (b[i] - a[i]) / max(a[i], b[i])
+
+        return sum(s) / n #retornem la mitja
+
+
+
     #mostra els clústers per terminal
     def show_results(self):
         n = self.n
@@ -122,6 +182,9 @@ class Clustering():
             for j in range(m):
                 lloc = self.clusters[i][j]
                 print(f"     · {lloc.nom}")
+
+        sil = self.calc_silhouette()
+        print(f"El valor de Silhouette és: {sil}")
 
 
     #mostra els clusters de forma visual
