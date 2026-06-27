@@ -20,3 +20,5 @@ Els tres fitxers més rellevants són:
 - `Lloc.py`: és una classe que permet representar les dades. Un lloc té un nom i una coordenada x i una altra y. Els llocs s'han de visualitzar com una vista de satèl·lit.
 
 ## Resultats
+Un exemple de resultat obtingut és:  
+/home/alnau/Imatges/Captures de pantalla/Captura de pantalla de 2026-06-27 17-15-33.png
